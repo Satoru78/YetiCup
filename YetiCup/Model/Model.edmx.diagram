@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="808ed5acdc344dab8bbc0dc308dc7d0d" Name="Diagram1">
+        <EntityTypeShape EntityType="dbGoldbergModel.Admin" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Calendar" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Championships" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Dostizheniya" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Organizer" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Participants" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Profile" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Score" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Teams" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Timeline" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbGoldbergModel.Users" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="dbGoldbergModel.Calendar_Championships_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.Championships_Participants_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.Championships_Timeline_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.FK_Dostizheniya_Championships" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.FK_Organizer_Championships" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.FK_Dostizheniya_Participants" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.FK_Participants_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.Participants_History_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.Teams_Participants_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="dbGoldbergModel.Users_Profile_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

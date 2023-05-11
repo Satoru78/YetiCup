@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetiCup", "YetiCup\YetiCup.csproj", "{1DA9DE29-81A2-481B-B081-90A2897DC388}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DA9DE29-81A2-481B-B081-90A2897DC388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA9DE29-81A2-481B-B081-90A2897DC388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA9DE29-81A2-481B-B081-90A2897DC388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA9DE29-81A2-481B-B081-90A2897DC388}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B93AC97-675E-4B9D-99AC-671FA0635644}
+	EndGlobalSection
+EndGlobal

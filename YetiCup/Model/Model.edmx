@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище dbGoldbergModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="date_id" />
+            <PropertyRef Name="year_quarter_id" />
+            <PropertyRef Name="quarter_id" />
+            <PropertyRef Name="year_month_id" />
+            <PropertyRef Name="month_id" />
+            <PropertyRef Name="year_week_id" />
+            <PropertyRef Name="week_id" />
+            <PropertyRef Name="day_of_week_id" />
+          </Key>
+          <Property Name="date_id" Type="datetime" Nullable="false" />
+          <Property Name="year_quarter_id" Type="int" Nullable="false" />
+          <Property Name="quarter_id" Type="int" Nullable="false" />
+          <Property Name="year_month_id" Type="int" Nullable="false" />
+          <Property Name="month_id" Type="int" Nullable="false" />
+          <Property Name="year_week_id" Type="int" Nullable="false" />
+          <Property Name="week_id" Type="int" Nullable="false" />
+          <Property Name="day_of_week_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="quarters" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="quarter" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="months" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="month" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="weeks" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="week" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="day_of_week" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Championships">
+          <Key>
+            <PropertyRef Name="championship_id" />
+          </Key>
+          <Property Name="championship_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="championship_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="400" />
+          <Property Name="date_id" Type="datetime" />
+          <Property Name="year_quarter_id" Type="int" />
+          <Property Name="quarter_id" Type="int" />
+          <Property Name="year_month_id" Type="int" />
+          <Property Name="month_id" Type="int" />
+          <Property Name="year_week_id" Type="int" />
+          <Property Name="week_id" Type="int" />
+          <Property Name="day_of_week_id" Type="int" />
+          <Property Name="location" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Dostizheniya">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="participant_id" Type="int" Nullable="false" />
+          <Property Name="championship_id" Type="int" Nullable="false" />
+          <Property Name="championship_date" Type="datetime" Nullable="false" />
+          <Property Name="result" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="championship_id" Type="int" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="participant_id" />
+          </Key>
+          <Property Name="participant_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="championship_id" Type="int" Nullable="false" />
+          <Property Name="team_id" Type="int" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="profile_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="fist_name" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="second_name" Type="varchar" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="50" />
+          <Property Name="School" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="participant_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="team_id" />
+          </Key>
+          <Property Name="team_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="team_name" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timeline">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_picture" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="championship_id" Type="int" Nullable="false" />
+          <Property Name="event_description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="Calendar_Championships_fk">
+          <End Role="Calendar" Type="Self.Calendar" Multiplicity="0..1" />
+          <End Role="Championships" Type="Self.Championships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendar">
+              <PropertyRef Name="date_id" />
+              <PropertyRef Name="year_quarter_id" />
+              <PropertyRef Name="quarter_id" />
+              <PropertyRef Name="year_month_id" />
+              <PropertyRef Name="month_id" />
+              <PropertyRef Name="year_week_id" />
+              <PropertyRef Name="week_id" />
+              <PropertyRef Name="day_of_week_id" />
+            </Principal>
+            <Dependent Role="Championships">
+              <PropertyRef Name="date_id" />
+              <PropertyRef Name="year_quarter_id" />
+              <PropertyRef Name="quarter_id" />
+              <PropertyRef Name="year_month_id" />
+              <PropertyRef Name="month_id" />
+              <PropertyRef Name="year_week_id" />
+              <PropertyRef Name="week_id" />
+              <PropertyRef Name="day_of_week_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Championships_Participants_fk">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Championships_Timeline_fk">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Timeline" Type="Self.Timeline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Timeline">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dostizheniya_Championships">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Dostizheniya" Type="Self.Dostizheniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Dostizheniya">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dostizheniya_Participants">
+          <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+          <End Role="Dostizheniya" Type="Self.Dostizheniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participants">
+              <PropertyRef Name="participant_id" />
+            </Principal>
+            <Dependent Role="Dostizheniya">
+              <PropertyRef Name="participant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organizer_Championships">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Organizer">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participants_Profile">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Participants_History_fk">
+          <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participants">
+              <PropertyRef Name="participant_id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="participant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Teams_Participants_fk">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="team_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Profile_fk">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище dbGoldbergModelContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Championships" EntityType="Self.Championships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dostizheniya" EntityType="Self.Dostizheniya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timeline" EntityType="Self.Timeline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Calendar_Championships_fk" Association="Self.Calendar_Championships_fk">
+            <End Role="Calendar" EntitySet="Calendar" />
+            <End Role="Championships" EntitySet="Championships" />
+          </AssociationSet>
+          <AssociationSet Name="Championships_Participants_fk" Association="Self.Championships_Participants_fk">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Championships_Timeline_fk" Association="Self.Championships_Timeline_fk">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Timeline" EntitySet="Timeline" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dostizheniya_Championships" Association="Self.FK_Dostizheniya_Championships">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Dostizheniya" EntitySet="Dostizheniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dostizheniya_Participants" Association="Self.FK_Dostizheniya_Participants">
+            <End Role="Participants" EntitySet="Participants" />
+            <End Role="Dostizheniya" EntitySet="Dostizheniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organizer_Championships" Association="Self.FK_Organizer_Championships">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Organizer" EntitySet="Organizer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participants_Profile" Association="Self.FK_Participants_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Participants_History_fk" Association="Self.Participants_History_fk">
+            <End Role="Participants" EntitySet="Participants" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="Teams_Participants_fk" Association="Self.Teams_Participants_fk">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Profile_fk" Association="Self.Users_Profile_fk">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbGoldbergModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="date_id" />
+            <PropertyRef Name="year_quarter_id" />
+            <PropertyRef Name="quarter_id" />
+            <PropertyRef Name="year_month_id" />
+            <PropertyRef Name="month_id" />
+            <PropertyRef Name="year_week_id" />
+            <PropertyRef Name="week_id" />
+            <PropertyRef Name="day_of_week_id" />
+          </Key>
+          <Property Name="date_id" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="year_quarter_id" Type="Int32" Nullable="false" />
+          <Property Name="quarter_id" Type="Int32" Nullable="false" />
+          <Property Name="year_month_id" Type="Int32" Nullable="false" />
+          <Property Name="month_id" Type="Int32" Nullable="false" />
+          <Property Name="year_week_id" Type="Int32" Nullable="false" />
+          <Property Name="week_id" Type="Int32" Nullable="false" />
+          <Property Name="day_of_week_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="quarters" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quarter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="months" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weeks" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="week" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="day_of_week" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Championships" Relationship="Self.Calendar_Championships_fk" FromRole="Calendar" ToRole="Championships" />
+        </EntityType>
+        <EntityType Name="Championships">
+          <Key>
+            <PropertyRef Name="championship_id" />
+          </Key>
+          <Property Name="championship_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="championship_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="date_id" Type="DateTime" Precision="3" />
+          <Property Name="year_quarter_id" Type="Int32" />
+          <Property Name="quarter_id" Type="Int32" />
+          <Property Name="year_month_id" Type="Int32" />
+          <Property Name="month_id" Type="Int32" />
+          <Property Name="year_week_id" Type="Int32" />
+          <Property Name="week_id" Type="Int32" />
+          <Property Name="day_of_week_id" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Calendar" Relationship="Self.Calendar_Championships_fk" FromRole="Championships" ToRole="Calendar" />
+          <NavigationProperty Name="Participants" Relationship="Self.Championships_Participants_fk" FromRole="Championships" ToRole="Participants" />
+          <NavigationProperty Name="Timeline" Relationship="Self.Championships_Timeline_fk" FromRole="Championships" ToRole="Timeline" />
+          <NavigationProperty Name="Dostizheniya" Relationship="Self.FK_Dostizheniya_Championships" FromRole="Championships" ToRole="Dostizheniya" />
+          <NavigationProperty Name="Organizer" Relationship="Self.FK_Organizer_Championships" FromRole="Championships" ToRole="Organizer" />
+        </EntityType>
+        <EntityType Name="Dostizheniya">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="participant_id" Type="Int32" Nullable="false" />
+          <Property Name="championship_id" Type="Int32" Nullable="false" />
+          <Property Name="championship_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="result" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Championships" Relationship="Self.FK_Dostizheniya_Championships" FromRole="Dostizheniya" ToRole="Championships" />
+          <NavigationProperty Name="Participants" Relationship="Self.FK_Dostizheniya_Participants" FromRole="Dostizheniya" ToRole="Participants" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="championship_id" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Championships" Relationship="Self.FK_Organizer_Championships" FromRole="Organizer" ToRole="Championships" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="participant_id" />
+          </Key>
+          <Property Name="participant_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="championship_id" Type="Int32" Nullable="false" />
+          <Property Name="team_id" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="profile_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Championships" Relationship="Self.Championships_Participants_fk" FromRole="Participants" ToRole="Championships" />
+          <NavigationProperty Name="Dostizheniya" Relationship="Self.FK_Dostizheniya_Participants" FromRole="Participants" ToRole="Dostizheniya" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Participants_Profile" FromRole="Participants" ToRole="Profile" />
+          <NavigationProperty Name="Score" Relationship="Self.Participants_History_fk" FromRole="Participants" ToRole="Score" />
+          <NavigationProperty Name="Teams" Relationship="Self.Teams_Participants_fk" FromRole="Participants" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="fist_name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="second_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="School" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.FK_Participants_Profile" FromRole="Profile" ToRole="Participants" />
+          <NavigationProperty Name="Users" Relationship="Self.Users_Profile_fk" FromRole="Profile" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="participant_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.Participants_History_fk" FromRole="Score" ToRole="Participants" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="team_id" />
+          </Key>
+          <Property Name="team_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="team_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.Teams_Participants_fk" FromRole="Teams" ToRole="Participants" />
+        </EntityType>
+        <EntityType Name="Timeline">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_picture" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="championship_id" Type="Int32" Nullable="false" />
+          <Property Name="event_description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Championships" Relationship="Self.Championships_Timeline_fk" FromRole="Timeline" ToRole="Championships" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.Users_Profile_fk" FromRole="Users" ToRole="Profile" />
+        </EntityType>
+        <Association Name="Calendar_Championships_fk">
+          <End Role="Calendar" Type="Self.Calendar" Multiplicity="0..1" />
+          <End Role="Championships" Type="Self.Championships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendar">
+              <PropertyRef Name="date_id" />
+              <PropertyRef Name="year_quarter_id" />
+              <PropertyRef Name="quarter_id" />
+              <PropertyRef Name="year_month_id" />
+              <PropertyRef Name="month_id" />
+              <PropertyRef Name="year_week_id" />
+              <PropertyRef Name="week_id" />
+              <PropertyRef Name="day_of_week_id" />
+            </Principal>
+            <Dependent Role="Championships">
+              <PropertyRef Name="date_id" />
+              <PropertyRef Name="year_quarter_id" />
+              <PropertyRef Name="quarter_id" />
+              <PropertyRef Name="year_month_id" />
+              <PropertyRef Name="month_id" />
+              <PropertyRef Name="year_week_id" />
+              <PropertyRef Name="week_id" />
+              <PropertyRef Name="day_of_week_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Championships_Participants_fk">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Championships_Timeline_fk">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Timeline" Type="Self.Timeline" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Timeline">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dostizheniya_Championships">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Dostizheniya" Type="Self.Dostizheniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Dostizheniya">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organizer_Championships">
+          <End Role="Championships" Type="Self.Championships" Multiplicity="1" />
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Championships">
+              <PropertyRef Name="championship_id" />
+            </Principal>
+            <Dependent Role="Organizer">
+              <PropertyRef Name="championship_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dostizheniya_Participants">
+          <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+          <End Role="Dostizheniya" Type="Self.Dostizheniya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participants">
+              <PropertyRef Name="participant_id" />
+            </Principal>
+            <Dependent Role="Dostizheniya">
+              <PropertyRef Name="participant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participants_Profile">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Participants_History_fk">
+          <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+          <End Role="Score" Type="Self.Score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participants">
+              <PropertyRef Name="participant_id" />
+            </Principal>
+            <Dependent Role="Score">
+              <PropertyRef Name="participant_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Teams_Participants_fk">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="team_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="team_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Users_Profile_fk">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbGoldbergEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Calendar" EntityType="Self.Calendar" />
+          <EntitySet Name="Championships" EntityType="Self.Championships" />
+          <EntitySet Name="Dostizheniya" EntityType="Self.Dostizheniya" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" />
+          <EntitySet Name="Score" EntityType="Self.Score" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" />
+          <EntitySet Name="Timeline" EntityType="Self.Timeline" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="Calendar_Championships_fk" Association="Self.Calendar_Championships_fk">
+            <End Role="Calendar" EntitySet="Calendar" />
+            <End Role="Championships" EntitySet="Championships" />
+          </AssociationSet>
+          <AssociationSet Name="Championships_Participants_fk" Association="Self.Championships_Participants_fk">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Championships_Timeline_fk" Association="Self.Championships_Timeline_fk">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Timeline" EntitySet="Timeline" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dostizheniya_Championships" Association="Self.FK_Dostizheniya_Championships">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Dostizheniya" EntitySet="Dostizheniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organizer_Championships" Association="Self.FK_Organizer_Championships">
+            <End Role="Championships" EntitySet="Championships" />
+            <End Role="Organizer" EntitySet="Organizer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dostizheniya_Participants" Association="Self.FK_Dostizheniya_Participants">
+            <End Role="Participants" EntitySet="Participants" />
+            <End Role="Dostizheniya" EntitySet="Dostizheniya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participants_Profile" Association="Self.FK_Participants_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Participants_History_fk" Association="Self.Participants_History_fk">
+            <End Role="Participants" EntitySet="Participants" />
+            <End Role="Score" EntitySet="Score" />
+          </AssociationSet>
+          <AssociationSet Name="Teams_Participants_fk" Association="Self.Teams_Participants_fk">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="Users_Profile_fk" Association="Self.Users_Profile_fk">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dbGoldbergModelContainer" CdmEntityContainer="dbGoldbergEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendar">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Calendar">
+              <MappingFragment StoreEntitySet="Calendar">
+                <ScalarProperty Name="date_id" ColumnName="date_id" />
+                <ScalarProperty Name="year_quarter_id" ColumnName="year_quarter_id" />
+                <ScalarProperty Name="quarter_id" ColumnName="quarter_id" />
+                <ScalarProperty Name="year_month_id" ColumnName="year_month_id" />
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="year_week_id" ColumnName="year_week_id" />
+                <ScalarProperty Name="week_id" ColumnName="week_id" />
+                <ScalarProperty Name="day_of_week_id" ColumnName="day_of_week_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="quarters" ColumnName="quarters" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="months" ColumnName="months" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="weeks" ColumnName="weeks" />
+                <ScalarProperty Name="week" ColumnName="week" />
+                <ScalarProperty Name="day_of_week" ColumnName="day_of_week" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Championships">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Championships">
+              <MappingFragment StoreEntitySet="Championships">
+                <ScalarProperty Name="championship_id" ColumnName="championship_id" />
+                <ScalarProperty Name="championship_name" ColumnName="championship_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="date_id" ColumnName="date_id" />
+                <ScalarProperty Name="year_quarter_id" ColumnName="year_quarter_id" />
+                <ScalarProperty Name="quarter_id" ColumnName="quarter_id" />
+                <ScalarProperty Name="year_month_id" ColumnName="year_month_id" />
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="year_week_id" ColumnName="year_week_id" />
+                <ScalarProperty Name="week_id" ColumnName="week_id" />
+                <ScalarProperty Name="day_of_week_id" ColumnName="day_of_week_id" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dostizheniya">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Dostizheniya">
+              <MappingFragment StoreEntitySet="Dostizheniya">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="participant_id" ColumnName="participant_id" />
+                <ScalarProperty Name="championship_id" ColumnName="championship_id" />
+                <ScalarProperty Name="championship_date" ColumnName="championship_date" />
+                <ScalarProperty Name="result" ColumnName="result" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizer">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Organizer">
+              <MappingFragment StoreEntitySet="Organizer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="championship_id" ColumnName="championship_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Participants">
+              <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="participant_id" ColumnName="participant_id" />
+                <ScalarProperty Name="championship_id" ColumnName="championship_id" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="profile_id" ColumnName="profile_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profile">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="fist_name" ColumnName="fist_name" />
+                <ScalarProperty Name="second_name" ColumnName="second_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="School" ColumnName="School" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Score">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="participant_id" ColumnName="participant_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbGoldbergModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Teams">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="team_name" ColumnName="team_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timeline">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Timeline">
+              <MappingFragment StoreEntitySet="Timeline">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="event_picture" ColumnName="event_picture" />
+                <ScalarProperty Name="championship_id" ColumnName="championship_id" />
+                <ScalarProperty Name="event_description" ColumnName="event_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="dbGoldbergModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
